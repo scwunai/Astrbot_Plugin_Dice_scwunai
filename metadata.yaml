@@ -1,6 +1,6 @@
 name: astrbot_plugin_dice # 这是你的插件的唯一识别名。
 desc: 一个骰子插件，支持设置面数和检定阈值，输入/dicehelp获取帮助 # 插件简短描述
-help: "输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，False代表将所有投掷结果相加并进行总和检定，True代表分别计算每次投掷的检定。\n 示例/roll 1d6 3 False \n 返回：你投掷了 1 次 6 面骰子，结果: 4。\n检定成功的次数: 1/1 次\n你有 1 次成功检定！"  # 插件的帮助信息
+help: "输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，0代表将所有投掷结果相加并进行总和检定，1代表分别计算每次投掷的检定。\n 示例/roll 1d6 3 False \n 返回：你投掷了 1 次 6 面骰子，结果: 4。\n检定成功的次数: 1/1 次\n你有 1 次成功检定！"  # 插件的帮助信息
 version: v1.0.0 # 插件版本号。格式：v1.1.1 或者 v1.1
 author: scwunai # 作者
 repo: https://github.com/scwunai/Astrobot_Plugin_Dice_scwunai # 插件的仓库地址

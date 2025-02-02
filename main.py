@@ -10,7 +10,7 @@ class DicePlugin(Star):
     
     # 注册指令 /roll  <次数>d<面数> <检定阈值>
     @filter.command("roll")
-    async def roll_dice(self, event: AstrMessageEvent, dice: str, threshold: int , single_check_mode: bool):
+    async def roll_dice(self, event: AstrMessageEvent, dice: str, threshold: int , single_check_mode: int):
         """
         掷骰子的逻辑，支持格式 xdy (默认 1d6) 和阈值。
         sum_check：如果为 True，则将所有投掷结果相加并进行总和检定。
@@ -27,7 +27,7 @@ class DicePlugin(Star):
         total_sum = sum(rolls)
 
         # 根据 single_check_mode 参数判断检定方式
-        if single_check_mode:
+        if single_check_mode == 1:
             # 使用单个骰子进行检定
             result_message = f"你投掷了 {roll_count} 次 {die_faces} 面骰子，结果: {', '.join(map(str, rolls))}。\n"
             result_message += f"检定成功的次数: {success_count}/{roll_count} 次\n"
@@ -50,5 +50,5 @@ class DicePlugin(Star):
     async def help ( self , event: AstrMessageEvent):
         # 发送帮助信息
         yield event.plain_result(
-            "输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，False代表将所有投掷结果相加并进行总和检定，True代表分别计算每次投掷的检定。\n 示例/roll 1d6 3 False \n 返回：你投掷了 1 次 6 面骰子，结果: 4。\n检定成功的次数: 1/1 次\n你有 1 次成功检定！ "
+            "输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，0代表将所有投掷结果相加并进行总和检定，1代表分别计算每次投掷的检定。\n 示例/roll 1d6 3 False \n 返回：你投掷了 1 次 6 面骰子，结果: 4。\n检定成功的次数: 1/1 次\n你有 1 次成功检定！ "
         )
