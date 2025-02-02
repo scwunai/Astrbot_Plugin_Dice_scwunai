@@ -1,15 +1,15 @@
 import random
 import re
-from astrbot.api.event import filter, AstrMessageEvent, MessageEventResult
+from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
 
-@register("dnd_Dice", "scwunai", "一个 DnD 骰子插件，支持格式 xdY 和检定功能", "1.0.0")
+@register("dnd_dice", "Your Name", "一个 DnD 骰子插件，支持格式 xdY 和检定功能", "1.0.0")
 class DnDDicePlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
 
     @filter.command("roll")
-    async def roll_dice(self, event: AstrMessageEvent, dice: str, threshold: int = 10):
+    async def roll_dice(self, event: AstrMessageEvent, dice: str = "1d6", threshold: int = 3):
         # 正则表达式匹配 xdy 格式
         match = re.match(r'(\d*)d(\d+)', dice)
 
@@ -21,6 +21,7 @@ class DnDDicePlugin(Star):
         num_rolls = int(match.group(1)) if match.group(1) else 1  # 默认为 1
         sides = int(match.group(2))
 
+        # 使用随机数生成骰子投掷结果
         results = [random.randint(1, sides) for _ in range(num_rolls)]
         total = sum(results)
         
