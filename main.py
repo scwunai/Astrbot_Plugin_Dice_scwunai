@@ -50,5 +50,5 @@ class DicePlugin(Star):
     async def help ( self , event: AstrMessageEvent):
         # 发送帮助信息
         yield event.plain_result(
-            "输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，0代表将所有投掷结果相加并进行总和检定，1代表分别计算每次投掷的检定。\n 示例/roll 1d6 3 False \n 返回：你投掷了 1 次 6 面骰子，结果: 4。\n检定成功的次数: 1/1 次\n你有 1 次成功检定！ "
+            "输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，0代表将所有投掷结果相加并进行总和检定，1代表分别计算每次投掷的检定。\n 示例/roll 1d6 3 1 \n 返回：你投掷了 1 次 6 面骰子，结果: 4。\n检定成功的次数: 1/1 次\n你有 1 次成功检定！ "
         )
