@@ -1,6 +1,6 @@
 name: dnd_Dice # 这是你的插件的唯一识别名。
-desc: 一个骰子插件，支持设置面数和检定阈值 # 插件简短描述
-help: 输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，False代表将所有投掷结果相加并进行总和检定，True代表分别计算每次投掷的检定。 默认值为 1d6 3 False，即/roll = /roll 1d6 3 False # 插件的帮助信息
+desc: 一个骰子插件，支持设置面数和检定阈值，输入/dicehelp获取帮助 # 插件简短描述
+help: 输入/dicehelp获取帮助，输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，False代表将所有投掷结果相加并进行总和检定，True代表分别计算每次投掷的检定。 默认值为 1d6 3 False，即/roll = /roll 1d6 3 False # 插件的帮助信息
 version: v1.0.0 # 插件版本号。格式：v1.1.1 或者 v1.1
 author: scwunai # 作者
 repo: https://github.com/scwunai/Astrobot_Plugin_Dice_scwunai # 插件的仓库地址

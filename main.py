@@ -41,3 +41,10 @@ class DicePlugin(Star):
 
         # 发送结果
         yield event.plain_result(result_message)
+    
+    # 注册指令 /dicehelp
+    @filter.command("dicehelp")
+        # 发送帮助信息
+        yield event.plain_result(
+            "输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，False代表将所有投掷结果相加并进行总和检定，True代表分别计算每次投掷的检定。 默认值为 1d6 3 False，即/roll = /roll 1d6 3 False"
+        )
