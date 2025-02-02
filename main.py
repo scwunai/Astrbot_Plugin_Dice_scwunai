@@ -3,7 +3,7 @@ import re
 from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
 
-@register("astrbot_plugin_dicedice", "scwunai", "一个 DnD 骰子插件，支持格式 xdY 和检定功能", "1.0.0")
+@register("astrbot_plugin_dicedice", "scwunai", "一个骰子插件，支持设置面数和检定阈值，输入 /dicehelp 获取帮助", "1.0.0")
 class DicePlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
