@@ -10,11 +10,26 @@ class DicePlugin(Star):
     
     # 注册指令 /roll  <次数>d<面数> <检定阈值>
     @filter.command("roll")
-    async def roll_dice(self, event: AstrMessageEvent, dice: str, threshold: int , single_check_mode: int):
+    async def roll_dice(self, event: AstrMessageEvent, dice: str = None, threshold: int = None , single_check_mode: int = None):
         """
         掷骰子的逻辑，支持格式 xdy (默认 1d6) 和阈值。
         sum_check：如果为 True，则将所有投掷结果相加并进行总和检定。
         """
+        if dice:
+            dice = dice
+        else:
+            dice = "1d6"
+        
+        if threshold:
+            threshold = threshold
+        else:
+            threshold = 3
+        
+        if single_check_mode:
+            single_check_mode = single_check_mode
+        else:
+            single_check_mode = 0
+
         try:
             # 解析 xdy 格式的骰子
             roll_count, die_faces = map(int, dice.lower().split('d'))
