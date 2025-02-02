@@ -1,4 +1,4 @@
-# dnd_dice
+# astrbot_plugin_dice
 
 AstrBot 骰子插件
 
