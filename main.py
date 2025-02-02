@@ -8,8 +8,8 @@ class DicePlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
     
-    # 注册指令 /dice <次数>d<面数> <阈值> <sum_check>
-    @filter.command("dice")
+    # 注册指令 /roll <次数>d<面数> <阈值> <sum_check>
+    @filter.command("roll")
     async def roll_dice(self, event: AstrMessageEvent, dice: str, threshold: int, sum_check: bool = True):
         """
         掷骰子的逻辑，支持格式 xdy (默认 1d6) 和阈值。
