@@ -3,7 +3,7 @@ import re
 from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
 
-@register("dnd_dice", "Your Name", "一个 DnD 骰子插件，支持格式 xdY 和检定功能", "1.0.0")
+@register("dice", "Your Name", "一个 DnD 骰子插件，支持格式 xdY 和检定功能", "1.0.0")
 class DicePlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
@@ -44,6 +44,7 @@ class DicePlugin(Star):
     
     # 注册指令 /dicehelp
     @filter.command("dicehelp")
+    async def help ( self , event: AstrMessageEvent):
         # 发送帮助信息
         yield event.plain_result(
             "输入/roll xdy <threshold> <check_single_mode>即可开始投掷，x代表投掷次数，y代表面数，threshold代表检定阈值, check_single_mode代表是否分别计算每次投掷的检定成功与否，False代表将所有投掷结果相加并进行总和检定，True代表分别计算每次投掷的检定。 默认值为 1d6 3 False，即/roll = /roll 1d6 3 False"
