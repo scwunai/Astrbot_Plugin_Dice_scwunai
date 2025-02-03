@@ -16,20 +16,9 @@ class DicePlugin(Star):
         掷骰子的逻辑，支持格式 xdy (默认 1d6) 和阈值。
         sum_check：如果为 True，则将所有投掷结果相加并进行总和检定。
         """
-        if dice:
-            dice = dice
-        else:
-            dice = "1d6"
-        
-        if threshold:
-            threshold = threshold
-        else:
-            threshold = 3
-        
-        if single_check_mode:
-            single_check_mode = single_check_mode
-        else:
-            single_check_mode = 0
+        dice = dice if dice else "1d6"
+        threshold = threshold if threshold else 3
+        single_check_mode = single_check_mode or 0
 
         try:
             # 解析 xdy 格式的骰子
@@ -92,20 +81,22 @@ class DicePlugin(Star):
         rp =  hash_to_number(hash.hexdigest())
         result_message = ""
         # 判断吉凶
-        if rp == 0:
-            result_message = f"今日人品值为：{rp},大凶凶"
-        elif 0 < rp <= 20:
-            result_message = f"今日人品值为：{rp},大凶"
-        elif 20 < rp <= 40:
-            result_message = f"今日人品值为：{rp},凶"
-        elif 40 < rp <= 60:
-            result_message = f"今日人品值为：{rp},小吉"
-        elif 60 < rp <= 80:
-            result_message = f"今日人品值为：{rp},中吉"
-        elif 80 < rp < 100:
-            result_message = f"今日人品值为：{rp},大吉"
-        elif rp == 100:
-            result_message = f"今日人品值为：{rp},大吉吉"
+        # 定义一个映射字典，包含 rp 范围和对应的结果
+        result_map = {
+            (0, 0): "大凶凶",
+            (1, 20): "大凶",
+            (21, 40): "凶",
+            (41, 60): "小吉",
+            (61, 80): "中吉",
+            (81, 99): "大吉",
+            (100, 100): "大吉吉"
+        }
+
+        # 遍历字典，找到符合的范围并返回结果
+        for (start, end), message in result_map.items():
+            if start <= rp <= end:
+                result_message = f"今日人品值为：{rp},{message}"
+                break
         else:
             result_message = f"今日人品值为：{rp},神明没有投下目光，今天的运势掌握在你自己手里"
         
